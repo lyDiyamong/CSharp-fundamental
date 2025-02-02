@@ -24,7 +24,8 @@ namespace CSharpCrashCourse
             // Collections();
             // HashSetExample();
             // DictionaryExample();
-            QueueExample();
+            // QueueExample();
+            StackExample();
         }
 
         static void PrintToConsole() 
@@ -271,6 +272,35 @@ namespace CSharpCrashCourse
                 Console.WriteLine($"Processing: {currentDoc}");
             }
         }
+        static void StackExample()
+        {
+            // Creating a Stack (LIFO - Last In First Out)
+            Stack<string> browserHistory = new Stack<string>();
 
+            // Push (add) items to the stack
+            browserHistory.Push("google.com");
+            browserHistory.Push("github.com");
+            browserHistory.Push("stackoverflow.com");
+
+            Console.WriteLine($"Pages in history: {browserHistory.Count}");  // Output: 3
+
+            // Peek at the top item (without removing it)
+            string currentPage = browserHistory.Peek();
+            Console.WriteLine($"Current page: {currentPage}");  // stackoverflow.com
+
+            // Pop (remove and return) items
+            string previousPage = browserHistory.Pop();  // removes stackoverflow.com
+            Console.WriteLine($"Going back to: {browserHistory.Peek()}");  // github.com
+
+            // Check if stack contains an item
+            bool hasPage = browserHistory.Contains("google.com");  // true
+
+            // Process entire stack
+            while (browserHistory.Count > 0)
+            {
+                string page = browserHistory.Pop();
+                Console.WriteLine($"Removing: {page}");
+            }
+        }
     }
 }
