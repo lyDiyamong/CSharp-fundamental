@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CSharpCrash.OOP;
 
 namespace CSharpCrashCourse
 {
     class Program
-    {   
+    {
         // Static keyword means:
         // 1. The member belongs to the type itself (Program class) rather than to a specific instance
         // 2. Only one copy exists in memory regardless of how many instances of the class are created
@@ -25,10 +26,24 @@ namespace CSharpCrashCourse
             // HashSetExample();
             // DictionaryExample();
             // QueueExample();
-            StackExample();
+            // StackExample();
+
+            //! OOP example 
+            // Testing encapsulation
+            // Ex 1
+            Rectangle rectangle = new Rectangle(1.5, 2.5);
+            rectangle.DisplayArea();
+            // Ex 2
+            BankAccount myBankAccount = new BankAccount();
+
+            myBankAccount.Deposit(33);
+            myBankAccount.Deposit(22);
+            myBankAccount.DisplayBalance();
+            
+
         }
 
-        static void PrintToConsole() 
+        static void PrintToConsole()
         {
             Console.WriteLine("Hello, World!");
         }
@@ -73,10 +88,12 @@ namespace CSharpCrashCourse
             if (a > b)
             {
                 Console.WriteLine($"a is greater than b");
-            } else if (a < b)
+            }
+            else if (a < b)
             {
                 Console.WriteLine($"a is less than b");
-            } else
+            }
+            else
             {
                 Console.WriteLine($"a is equal to b");
             }
@@ -128,28 +145,28 @@ namespace CSharpCrashCourse
             int[] numbers = { 1, 2, 3, 4, 5 };
             Console.WriteLine($"Fixed Array length: {numbers.Length}");
             Console.WriteLine($"numbers[0]: {numbers[0]}");
-            
+
             // Cannot add elements to fixed array
             // This will not work: numbers.Append(6); 
-            
+
             // List<T> (Dynamic Array)
             // - Size can grow and shrink
             // - More flexible
             // - Slightly more memory overhead
             List<string> names = new List<string> { "John", "Jane", "Doe" };
             Console.WriteLine($"Initial List count: {names.Count}");
-            
+
             // Adding elements
             names.Add("Mong");
             Console.WriteLine($"After adding, List count: {names.Count}");
-            
+
             // Removing elements
             names.Remove("John");
             Console.WriteLine($"After removing, List count: {names.Count}");
-            
+
             // Accessing elements
             Console.WriteLine($"First name: {names[0]}");
-            
+
             // Iterating through the List
             Console.WriteLine("All names:");
             foreach (string name in names)
@@ -163,7 +180,7 @@ namespace CSharpCrashCourse
             anyTypeArray.Add("John");
             anyTypeArray.Add(20);
             anyTypeArray.Add(true);
-            foreach ( object item in anyTypeArray)
+            foreach (object item in anyTypeArray)
             {
                 Console.WriteLine(item);
             }
@@ -183,21 +200,21 @@ namespace CSharpCrashCourse
             uniqueNames.Add("John");
             uniqueNames.Add("Jane");
             uniqueNames.Add("John");  // This won't be added (duplicate)
-            
+
             Console.WriteLine($"Count: {uniqueNames.Count}");  // Output: 2
 
             // Checking if element exists (very fast)
             bool hasJohn = uniqueNames.Contains("John");  // true
-            
+
             // Set operations
             HashSet<string> moreNames = new HashSet<string> { "Jane", "Bob", "Alice" };
-            
+
             // Union (combines sets, no duplicates)
             uniqueNames.UnionWith(moreNames);
-            
+
             // Intersection (common elements)
             uniqueNames.IntersectWith(moreNames);
-            
+
             // Remove elements
             uniqueNames.Remove("John");
         }
@@ -268,6 +285,7 @@ namespace CSharpCrashCourse
             // Process entire queue
             while (printQueue.Count > 0)
             {
+                // Remove each item in queue
                 string currentDoc = printQueue.Dequeue();
                 Console.WriteLine($"Processing: {currentDoc}");
             }
@@ -302,5 +320,10 @@ namespace CSharpCrashCourse
                 Console.WriteLine($"Removing: {page}");
             }
         }
+        public void Display()
+        {
+            Console.WriteLine("Display me");
+        }
     }
+
 }
